@@ -2,12 +2,10 @@ package com.mycompany.controller;
 
 import com.mycompany.model.Book;
 import com.mycompany.service.BookServiceImpl;
+import javafx.geometry.Pos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,6 +29,11 @@ public class BookController {
         }
 
         return ResponseEntity.ok(book);
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public void saveBook(@RequestBody Book book){
+        bookService.createBook(book);
     }
 
 
