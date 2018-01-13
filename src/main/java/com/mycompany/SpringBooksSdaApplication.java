@@ -4,6 +4,7 @@ import com.mycompany.model.Author;
 import com.mycompany.model.Book;
 import com.mycompany.model.Category;
 import com.mycompany.model.Publisher;
+import com.mycompany.repository.AuthorRepository;
 import com.mycompany.service.AuthorServiceImpl;
 import com.mycompany.service.BookServiceImpl;
 import com.mycompany.service.CategoryServiceImpl;
@@ -17,6 +18,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SpringBooksSdaApplication implements CommandLineRunner{
 	@Autowired
 	private AuthorServiceImpl authorService;
+
+	@Autowired
+	private AuthorRepository authorRepository;
 	@Autowired
 	private BookServiceImpl bookService;
 	@Autowired
@@ -59,6 +63,13 @@ public class SpringBooksSdaApplication implements CommandLineRunner{
 
 		bookService.createBook(book1);
 
+		Author author2 = authorRepository.findById(1);
+
+		Book book2 = new Book();
+		book2.setTitle("LALALa");
+		book2.setBookAuthor(author2);
+
+		bookService.createBook(book2);
 
 	}
 }
