@@ -2,13 +2,17 @@ package com.mycompany.service;
 
 import com.mycompany.interfaces.CategoryService;
 import com.mycompany.model.Category;
+import com.mycompany.repository.CategoryRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * Created by HP on 2018-01-13.
- */
+@Service
 public class CategoryServiceImpl implements CategoryService {
+    @Autowired
+    private CategoryRepository categoryRepository;
+
     @Override
     public List<Category> getAllCategory() {
         return null;
@@ -21,7 +25,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Category createCategory(Category category) {
-        return null;
+        return categoryRepository.save(category);
     }
 
     @Override

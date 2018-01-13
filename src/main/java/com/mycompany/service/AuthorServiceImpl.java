@@ -2,13 +2,17 @@ package com.mycompany.service;
 
 import com.mycompany.interfaces.AuthorService;
 import com.mycompany.model.Author;
+import com.mycompany.repository.AuthorRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * Created by HP on 2018-01-13.
- */
+@Service
 public class AuthorServiceImpl implements AuthorService{
+    @Autowired
+    private AuthorRepository authorRepository;
+
     @Override
     public List<Author> getAllAuthors() {
         return null;
@@ -21,7 +25,7 @@ public class AuthorServiceImpl implements AuthorService{
 
     @Override
     public Author createAuthor(Author author) {
-        return null;
+        return authorRepository.save(author);
     }
 
     @Override

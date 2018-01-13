@@ -1,6 +1,9 @@
 package com.mycompany;
 
+import com.mycompany.model.Author;
+import com.mycompany.model.Book;
 import com.mycompany.model.Category;
+import com.mycompany.model.Publisher;
 import com.mycompany.service.AuthorServiceImpl;
 import com.mycompany.service.BookServiceImpl;
 import com.mycompany.service.CategoryServiceImpl;
@@ -30,9 +33,31 @@ public class SpringBooksSdaApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 
 		Category category1 = new Category();
-		category1.setName("fanstasy");
+		category1.setName("przygodowa");
 
-		categoryService.
+		categoryService.createCategory(category1);
+
+		Author author1 = new Author();
+		author1.setAddress("Urocza 9");
+		author1.setLastname("Jan");
+		author1.setName("Niezbedny");
+
+		authorService.createAuthor(author1);
+
+		Publisher publisher1 = new Publisher();
+		publisher1.setName("Laura");
+		publisher1.setAddress("Lesna 2");
+
+		publisherService.createPublisher(publisher1);
+
+		Book book1 = new Book();
+		book1.setAuthor("AutorKsiazki2");
+		book1.setTitle("bezsennosc");
+		book1.setBookAuthor(author1);
+		book1.setCategory(category1);
+		book1.setPublisher(publisher1);
+
+		bookService.createBook(book1);
 
 
 	}

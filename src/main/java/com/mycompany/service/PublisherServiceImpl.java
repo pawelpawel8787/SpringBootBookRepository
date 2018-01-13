@@ -26,7 +26,7 @@ public class PublisherServiceImpl implements PublisherService{
 
     @Override
     public Publisher createPublisher(Publisher publisher) {
-        return null;
+        return publisherRepository.save(publisher);
     }
 
     @Override

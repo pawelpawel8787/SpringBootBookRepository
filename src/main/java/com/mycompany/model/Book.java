@@ -28,7 +28,7 @@ public class Book {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "publisher_id")
     private Publisher publisher;
 

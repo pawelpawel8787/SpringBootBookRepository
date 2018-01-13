@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "publisher")
@@ -20,8 +21,8 @@ public class Publisher {
 
     private String name;
 
-    @OneToOne(mappedBy = "publisher")
-    private Book book;
+    @OneToMany(mappedBy = "publisher")
+    private Set<Book> book;
 
     public Long getId() {
         return id;
