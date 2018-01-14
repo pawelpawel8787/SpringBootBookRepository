@@ -21,7 +21,7 @@ public class PublisherServiceImpl implements PublisherService{
 
     @Override
     public Publisher getPublisherById(Long id) {
-        return null;
+        return publisherRepository.findOne(id);
     }
 
     @Override
@@ -31,11 +31,11 @@ public class PublisherServiceImpl implements PublisherService{
 
     @Override
     public Publisher updatePublisher(Publisher publisher) {
-        return null;
+        return publisherRepository.save(publisher);
     }
 
     @Override
     public void deletePublisher(Publisher publisher) {
-
+        publisherRepository.delete(publisher);
     }
 }

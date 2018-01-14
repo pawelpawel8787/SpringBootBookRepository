@@ -10,18 +10,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/books")
+@RequestMapping("/app")
 public class BookController {
 
     @Autowired
     private BookServiceImpl bookService;
 
-    @GetMapping
+    @GetMapping("/books")
     public List<Book> getAllBooks() {
         return bookService.getAllBooks();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/books/{id}")
     public ResponseEntity<Book> findBookById(@PathVariable(value = "id") Long id){
         Book book = bookService.getBookById(id);
         if (book == null){
@@ -31,10 +31,21 @@ public class BookController {
         return ResponseEntity.ok(book);
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping("/books")
     public void saveBook(@RequestBody Book book){
         bookService.createBook(book);
     }
+
+    @DeleteMapping("/books/{id}")
+    public ResponseEntity<Book> deleteBookById(@PathVariable(value = "id") Long id){
+        Book book = bookService.getBookById(id);
+        if (book == null){
+            return ResponseEntity.notFound().build();
+        }
+        bookService.deleteBook(book);
+        return ResponseEntity.ok(book);
+    }
+
 
 
 }

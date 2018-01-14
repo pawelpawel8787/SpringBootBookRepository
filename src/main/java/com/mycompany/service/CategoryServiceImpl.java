@@ -15,12 +15,12 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public List<Category> getAllCategory() {
-        return null;
+        return categoryRepository.findAll();
     }
 
     @Override
     public Category getCategoryById(Long id) {
-        return null;
+        return categoryRepository.findOne(id);
     }
 
     @Override
@@ -30,11 +30,11 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Category updateCategory(Category category) {
-        return null;
+        return categoryRepository.save(category);
     }
 
     @Override
     public void deleteCategory(Category category) {
-
+        categoryRepository.delete(category);
     }
 }

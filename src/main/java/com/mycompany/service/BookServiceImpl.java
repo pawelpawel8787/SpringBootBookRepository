@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class BookServiceImpl implements BookService{
+public class BookServiceImpl implements BookService {
 
     @Autowired
     private BookRepository bookRepository;
@@ -27,17 +27,16 @@ public class BookServiceImpl implements BookService{
 
     @Override
     public Book createBook(Book book) {
-
         return bookRepository.save(book);
     }
 
     @Override
     public Book updateBook(Book book) {
-        return null;
+        return bookRepository.save(book);
     }
 
     @Override
     public void deleteBook(Book book) {
-
+        bookRepository.delete(book);
     }
 }
