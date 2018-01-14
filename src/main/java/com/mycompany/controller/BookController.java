@@ -22,30 +22,38 @@ public class BookController {
     }
 
     @GetMapping("/books/{id}")
-    public ResponseEntity<Book> findBookById(@PathVariable(value = "id") Long id){
+    public ResponseEntity<Book> findBookById(@PathVariable(value = "id") Long id) {
         Book book = bookService.getBookById(id);
-        if (book == null){
+        if (book == null) {
             return ResponseEntity.notFound().build();
         }
 
         return ResponseEntity.ok(book);
     }
 
+    @GetMapping("/booksByTitle/{title}")
+    public ResponseEntity<Book> findByTitle(@PathVariable(value = "title") String title) {
+        Book book = bookService.getBookByTitle(title);
+        if (book == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(book);
+    }
+
     @PostMapping("/books")
-    public void saveBook(@RequestBody Book book){
+    public void saveBook(@RequestBody Book book) {
         bookService.createBook(book);
     }
 
     @DeleteMapping("/books/{id}")
-    public ResponseEntity<Book> deleteBookById(@PathVariable(value = "id") Long id){
+    public ResponseEntity<Book> deleteBookById(@PathVariable(value = "id") Long id) {
         Book book = bookService.getBookById(id);
-        if (book == null){
+        if (book == null) {
             return ResponseEntity.notFound().build();
         }
         bookService.deleteBook(book);
         return ResponseEntity.ok(book);
     }
-
 
 
 }

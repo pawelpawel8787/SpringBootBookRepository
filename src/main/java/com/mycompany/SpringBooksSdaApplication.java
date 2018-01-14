@@ -43,7 +43,7 @@ public class SpringBooksSdaApplication implements CommandLineRunner{
 
 		Author author1 = new Author();
 		author1.setAddress("Urocza 9");
-		author1.setLastname("Jan");
+		author1.setLastname("Jana");
 		author1.setName("Niezbedny");
 
 		authorService.createAuthor(author1);
@@ -66,6 +66,7 @@ public class SpringBooksSdaApplication implements CommandLineRunner{
 		Author author2 = authorRepository.findById(1);
 
 		Book book2 = new Book();
+		book2.setAuthor("Zenon");
 		book2.setTitle("LALALa");
 		book2.setBookAuthor(author2);
 

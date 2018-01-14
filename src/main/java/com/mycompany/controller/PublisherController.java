@@ -20,7 +20,7 @@ public class PublisherController {
     public List<Publisher> getAllPublisher(){
         return publisherService.getAllPublisher();
     }
-    @GetMapping("/books/{id}")
+    @GetMapping("/publisher/{id}")
     public ResponseEntity<Publisher> findPublisherById(@PathVariable(value = "id") Long id){
         Publisher publisher = publisherService.getPublisherById(id);
         if (publisher == null){
@@ -30,12 +30,12 @@ public class PublisherController {
         return ResponseEntity.ok(publisher);
     }
 
-    @PostMapping("/books")
+    @PostMapping("/publisher")
     public void saveBook(@RequestBody Publisher publisher){
         publisherService.createPublisher(publisher);
     }
 
-    @DeleteMapping("/books/{id}")
+    @DeleteMapping("/publisher/{id}")
     public ResponseEntity<Publisher> deleteBookById(@PathVariable(value = "id") Long id){
         Publisher publisher = publisherService.getPublisherById(id);
         if (publisher == null){

@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Entity
@@ -17,6 +19,8 @@ public class Category {
     @Column(name = "category_id")
     private Long id;
 
+    @NotNull
+    @Size(min = 3, max = 18)
     private String name;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
