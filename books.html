@@ -1,0 +1,124 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+<form>
+    <label><b>Wprowadz ksiazke</b></label>
+    <br/><br/><br/>
+
+    <b>Autor </b>
+    <input id="author" type="text">
+    <br/><br/>
+
+    <b>Tytul </b>
+    <input id="title" type="text">
+
+    <br/><br/>
+
+    <b>Id autora </b>
+    <input id="author_id" type="text">
+
+    <br/><br/>
+
+    <b>Id kategorii </b>
+    <input id="category_id" type="text">
+
+    <br/><br/>
+
+    <b>Id wydawcy </b>
+    <input id="publisher_id" type="text">
+
+    <br/><br/>
+    <input type="button" id="dodaj" value="Dodaj">
+
+    <br/><br/>
+
+
+    <table border=1 class="inlineTable">
+        <tr>
+            <td><b>Autor</b></td>
+            <td><b>Tytul</b></td>
+            <td><b>Nazwisko autora</b></td>
+            <td><b>Kategoria</b></td>
+            <td><b>Wydawca</b></td>
+        </tr>
+    </table>
+
+
+</form>
+
+
+
+<ul></ul>
+
+<script>
+    $(document).ready(function () {
+        console.log("Działaa");
+
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:8080/app/books',
+            success: function (result) {
+                console.log(result);
+                $.each(result, function (key, value) {
+                    console.log(key);
+                    if (!jQuery.isEmptyObject(value.category)) {
+                        console.log(value.category.name);
+                    }
+                    console.log(value['title']);
+//                    console.log(value['category']['id']);
+//                    $("ul").append("<li>" + value['title'] + "</li>");
+                    $("table").append("<tr>" + "<td>" + value['author'] + "</td>" + "<td>" + value['title'] + "</td>" + "<td>" + value['bookAuthor']['name'] + "</td>" + "<td>" + value['category']['name'] + "</td>" + "<td>" + value['publisher']['name'] +"</td>" + "</tr>");
+//                    $("ul").append("<li>" + key + ": " + value['title'] + " - " + value['category']['name'] + "</li>");
+                })
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+
+        $("#dodaj").click(function () {
+            var author = $("#author").val();
+            var title = $("#title").val();
+            var author_id = $("#author_id").val();
+            var category_id = $("#category_id").val();
+            var publisher_id = $("#publisher_id").val();
+            console.log(title);
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:8080/app/books',
+
+                data: JSON.stringify({
+
+                    "author": author,
+                    "title": title,
+                    "author_id": $("#author_id").val(),
+                    "category_id": $("#category_id").val(),
+                    "publisher_id": $("#publisher_id").val()
+                }),
+
+
+                contentType: "application/json",
+                dataType: "json",
+                success: function (response) {
+                    console.log("Sukces: " + response);
+                },
+                error: function (xhr) {
+                    console.log("Error :(" + xhr.responseText);
+                }
+            })
+
+        });
+
+
+    });
+
+</script>
+
+</body>
+</html>

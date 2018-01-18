@@ -36,41 +36,41 @@ public class SpringBooksSdaApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 
-		Category category1 = new Category();
-		category1.setName("przygodowa");
+//		Category category1 = new Category();
+//		category1.setName("przygodowa");
+//
+//		categoryService.createCategory(category1);
+//
+//		Author author1 = new Author();
+//		author1.setAddress("Urocza 9");
+//		author1.setLastname("Jana");
+//		author1.setName("Niezbedny");
+//
+//		authorService.createAuthor(author1);
+//
+//		Publisher publisher1 = new Publisher();
+//		publisher1.setName("Laura");
+//		publisher1.setAddress("Lesna 2");
+//
+//		publisherService.createPublisher(publisher1);
+//
+//		Book book1 = new Book();
+//		book1.setAuthor("AutorKsiazki2");
+//		book1.setTitle("bezsennosc");
+//		book1.setBookAuthor(author1);
+//		book1.setCategory(category1);
+//		book1.setPublisher(publisher1);
+//
+//		bookService.createBook(book1);
 
-		categoryService.createCategory(category1);
-
-		Author author1 = new Author();
-		author1.setAddress("Urocza 9");
-		author1.setLastname("Jana");
-		author1.setName("Niezbedny");
-
-		authorService.createAuthor(author1);
-
-		Publisher publisher1 = new Publisher();
-		publisher1.setName("Laura");
-		publisher1.setAddress("Lesna 2");
-
-		publisherService.createPublisher(publisher1);
-
-		Book book1 = new Book();
-		book1.setAuthor("AutorKsiazki2");
-		book1.setTitle("bezsennosc");
-		book1.setBookAuthor(author1);
-		book1.setCategory(category1);
-		book1.setPublisher(publisher1);
-
-		bookService.createBook(book1);
-
-		Author author2 = authorRepository.findById(1);
-
-		Book book2 = new Book();
-		book2.setAuthor("Zenon");
-		book2.setTitle("LALALa");
-		book2.setBookAuthor(author2);
-
-		bookService.createBook(book2);
+//		Author author2 = authorRepository.findById(1);
+//
+//		Book book2 = new Book();
+//		book2.setAuthor("Zenon");
+//		book2.setTitle("LALALa");
+//		book2.setBookAuthor(author2);
+//
+//		bookService.createBook(book2);
 
 	}
 }

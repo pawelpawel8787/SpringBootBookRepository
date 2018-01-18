@@ -1,13 +1,17 @@
 package com.mycompany.service;
 
+import com.mycompany.exception.AuthorNotFoundException;
+import com.mycompany.exception.BookNotFoundException;
 import com.mycompany.interfaces.AuthorService;
 import com.mycompany.model.Author;
+import com.mycompany.model.Book;
 import com.mycompany.repository.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AuthorServiceImpl implements AuthorService{
@@ -19,10 +23,12 @@ public class AuthorServiceImpl implements AuthorService{
         return authorRepository.findAll();
     }
 
-    @Override
-    public Author getAuthorById(Long id) {
-        Author author = authorRepository.findOne(id);
-        return author;
+    public Author getAuthorById(Long id){
+        Optional<Author> author = authorRepository.findById(id);
+        if (author.isPresent()){
+            return author.get();
+        }else
+            throw new AuthorNotFoundException(id);
     }
 
     @Override

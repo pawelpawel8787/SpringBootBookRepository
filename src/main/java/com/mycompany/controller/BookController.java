@@ -17,6 +17,7 @@ public class BookController {
     @Autowired
     private BookServiceImpl bookService;
 
+    @CrossOrigin(value = "http://localhost:9999")
     @GetMapping("/books")
     public List<Book> getAllBooks() {
         return bookService.getAllBooks();
@@ -47,7 +48,7 @@ public class BookController {
         }
         return ResponseEntity.ok(book);
     }
-
+    @CrossOrigin(value = "http://localhost:9999")
     @PostMapping("/books")
     public void saveBook(@RequestBody Book book) {
         bookService.createBook(book);
