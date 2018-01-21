@@ -18,15 +18,15 @@ public class Book {
     @Column(name = "book_id")
     private Long id;
 
-    @NotNull
-    @Size(min = 3, max = 18)
+//    @NotNull
+//    @Size(min = 3, max = 18)
     private String author;
 
-    @NotNull
-    @Size(min = 3, max = 25)
+//    @NotNull
+//    @Size(min = 3, max = 25)
     private String title;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "author_id")
     private Author bookAuthor;
 

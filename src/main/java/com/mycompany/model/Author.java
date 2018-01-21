@@ -19,16 +19,16 @@ public class Author {
     @Column(name = "author_id")
     private Long id;
 
-    @NotNull
-    @Size(min = 3, max = 25)
+//    @NotNull
+//    @Size(min = 3, max = 25)
     private String address;
 
-    @NotNull
-    @Size(min = 3, max = 25)
+//    @NotNull
+//    @Size(min = 3, max = 25)
     private String lastname;
 
-    @NotNull
-    @Size(min = 3, max = 20)
+//    @NotNull
+//    @Size(min = 3, max = 20)
     private String name;
 
     @OneToMany(mappedBy = "bookAuthor", cascade = CascadeType.ALL)
