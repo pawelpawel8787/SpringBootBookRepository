@@ -15,7 +15,6 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter{
         return bCryptPasswordEncoder;
     }
 
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
 
 }
